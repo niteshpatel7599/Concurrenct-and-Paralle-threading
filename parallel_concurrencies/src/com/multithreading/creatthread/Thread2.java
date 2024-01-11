@@ -1,4 +1,4 @@
-package com.multithreading.examples;
+package com.multithreading.creatthread;
 
 public class Thread2 implements Runnable {
 

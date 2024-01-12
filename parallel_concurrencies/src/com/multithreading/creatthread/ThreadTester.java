@@ -32,14 +32,28 @@ public class ThreadTester {
 		 * We are using lambada here as Runnable is a functional interface which will contains
 		 * only one abstract method.
 		 */
-		Thread thread2 = new Thread(() ->{
-			for (int i = 0; i < 5; i++) {
-				System.out.println(Thread.currentThread() + " ,"+ i);
-			}
-		}, "Thread 2");
-		thread2.start();
-		System.out.println("Main is existing");
+//		Thread thread2 = new Thread(() ->{
+//			for (int i = 0; i < 5; i++) {
+//				System.out.println(Thread.currentThread() + " ,"+ i);
+//			}
+//		}, "Thread 2");
+//		thread2.start();
+//		System.out.println("Main is existing");
 		
+		Thread thread3 =new Thread(() ->{
+			try {
+				Thread.sleep(1);
+				for (int i = 10000; i > 0; i--);
+			} catch (InterruptedException e) {
+				// TODO: handle exception
+			}
+		}, "states");
+		thread3.start();
+		while(true) {
+			Thread.State state = thread3.getState();
+			System.out.println(state);
+			if(state  == Thread.State.TERMINATED) break;
+		}
 	}
 }
 
